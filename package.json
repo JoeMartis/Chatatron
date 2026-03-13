@@ -1,0 +1,41 @@
+{
+  "name": "fixatron2000",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:52854/git/JoeMartis/Fixatron2000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
+    "@tailwindcss/postcss": "^4.2.1",
+    "@types/node": "^25.3.3",
+    "@types/react": "^19.2.14",
+    "fast-xml-parser": "^5.4.2",
+    "nanoid": "^5.1.6",
+    "next": "^16.1.6",
+    "postcss": "^8.5.8",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tailwindcss": "^4.2.1",
+    "tar": "^7.5.10",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/tar": "^6.1.13",
+    "eslint": "^9.39.3",
+    "eslint-config-next": "^16.1.6",
+    "vitest": "^4.0.18"
+  }
+}

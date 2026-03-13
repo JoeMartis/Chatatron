@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixatron2000 — AI-Powered QA for UAI Modules</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --mit-red: #A31F34;
+    --mit-red-light: #c9485b;
+    --mit-gray: #8A8B8C;
+    --dark: #1a1a2e;
+    --darker: #0f0f1e;
+    --accent: #6366f1;
+    --accent-light: #818cf8;
+    --surface: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --green: #22c55e;
+    --amber: #f59e0b;
+    --red: #ef4444;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0f0f1e;
+    color: var(--text);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .deck { width: 100vw; height: 100vh; position: relative; }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 80px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .slide.active { display: flex; opacity: 1; }
+
+  .slide-title {
+    background: linear-gradient(135deg, #0f0f1e 0%, #1a1a3e 50%, #1e1e4a 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .slide-dark {
+    background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
+    color: white;
+  }
+
+  .slide-light {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    color: var(--text);
+  }
+
+  .slide-accent {
+    background: linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #818cf8 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .slide-mit {
+    background: linear-gradient(135deg, #7f1525 0%, #A31F34 50%, #c9485b 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .slide-story {
+    background: linear-gradient(135deg, #0c1220 0%, #162032 50%, #1a2740 100%);
+    color: white;
+  }
+
+  h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+  h2 { font-size: 2.5rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+  h3 { font-size: 1.5rem; font-weight: 600; line-height: 1.3; }
+  p { font-size: 1.25rem; line-height: 1.6; }
+  .subtitle { font-size: 1.4rem; font-weight: 400; opacity: 0.8; margin-top: 16px; }
+  .label { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0.6; margin-bottom: 12px; }
+
+  .content { max-width: 1100px; width: 100%; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin-top: 40px; }
+  .mt-4 { margin-top: 32px; }
+  .mt-6 { margin-top: 48px; }
+  .text-center { text-align: center; }
+
+  .card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 28px;
+    backdrop-filter: blur(10px);
+  }
+
+  .card-light {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .card h3 { margin-bottom: 10px; }
+  .card p { font-size: 1.05rem; opacity: 0.8; }
+  .card-light h3 { color: var(--text); margin-bottom: 10px; }
+  .card-light p { font-size: 1.05rem; color: var(--text-muted); }
+
+  .stat { text-align: center; }
+  .stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .stat-label { font-size: 1rem; margin-top: 8px; opacity: 0.7; }
+
+  .problem-list { list-style: none; margin-top: 28px; }
+  .problem-list li {
+    font-size: 1.2rem;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    line-height: 1.5;
+  }
+  .problem-list li:last-child { border-bottom: none; }
+  .problem-list .bullet {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    margin-top: 10px;
+    flex-shrink: 0;
+  }
+  .solution-list li .bullet { background: var(--green); }
+
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 36px;
+  }
+  .comparison-side { border-radius: 14px; padding: 28px; }
+  .comparison-before { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+  .comparison-after { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); }
+  .comparison-side h3 { margin-bottom: 16px; font-size: 1.1rem; }
+  .comparison-side ul { list-style: none; }
+  .comparison-side li { padding: 8px 0; font-size: 1.05rem; display: flex; align-items: center; gap: 10px; }
+
+  .highlight-box {
+    background: rgba(99,102,241,0.1);
+    border: 1px solid rgba(99,102,241,0.3);
+    border-radius: 14px;
+    padding: 24px 28px;
+    margin-top: 32px;
+  }
+  .highlight-box p { font-size: 1.15rem; opacity: 0.9; }
+
+  .impact-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .impact-row:last-child { border-bottom: none; }
+  .impact-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .impact-icon-green { background: rgba(34,197,94,0.15); }
+  .impact-icon-blue { background: rgba(99,102,241,0.15); }
+  .impact-icon-amber { background: rgba(245,158,11,0.15); }
+  .impact-icon-purple { background: rgba(168,85,247,0.15); }
+  .impact-text h3 { font-size: 1.15rem; margin-bottom: 4px; }
+  .impact-text p { font-size: 0.95rem; opacity: 0.7; }
+
+  /* Quote style */
+  .quote-block {
+    background: rgba(255,255,255,0.04);
+    border-left: 4px solid var(--accent-light);
+    border-radius: 0 14px 14px 0;
+    padding: 24px 32px;
+    margin-top: 32px;
+    font-size: 1.3rem;
+    font-style: italic;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+
+  /* Timeline */
+  .timeline { margin-top: 36px; }
+  .timeline-item {
+    display: flex;
+    gap: 24px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-marker {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(99,102,241,0.2);
+    border: 2px solid var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .timeline-content h3 { font-size: 1.15rem; margin-bottom: 4px; }
+  .timeline-content p { font-size: 1rem; opacity: 0.7; }
+
+  /* Agent cards */
+  .agent-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .agent-card:hover { transform: translateY(-2px); }
+  .agent-icon { font-size: 2.2rem; margin-bottom: 12px; }
+  .agent-card h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .agent-card p { font-size: 0.9rem; opacity: 0.65; }
+
+  .nav {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 100;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px);
+    padding: 8px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .nav button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+  .nav button:hover { background: rgba(255,255,255,0.2); }
+  .nav button:disabled { opacity: 0.3; cursor: default; }
+  .nav .counter {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+    min-width: 50px;
+    text-align: center;
+  }
+
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), #c084fc);
+    transition: width 0.3s ease;
+    z-index: 100;
+  }
+
+  /* Big number callout */
+  .big-callout {
+    font-size: 6rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ef4444, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .big-callout-green {
+    font-size: 6rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #22c55e, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .slide { padding: 40px; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .comparison { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progress"></div>
+
+<div class="deck" id="deck">
+
+  <!-- SLIDE 1: Title -->
+  <div class="slide slide-title active" data-slide="0">
+    <div class="content text-center">
+      <div class="label" style="color: var(--mit-red-light); opacity: 1;">MIT Open Learning &middot; Universal AI</div>
+      <h1 style="font-size: 4rem; margin-top: 8px;">Fixatron2000</h1>
+      <p class="subtitle" style="max-width: 750px; margin: 20px auto 0;">
+        AI-powered quality assurance for UAI Modules &mdash;<br>
+        ensuring every module meets the quality bar.
+      </p>
+      <div style="margin-top: 48px; opacity: 0.5; font-size: 1rem;">
+        Built through human + AI collaboration
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: The Opportunity -->
+  <div class="slide slide-dark" data-slide="1">
+    <div class="content">
+      <div class="label">The Opportunity</div>
+      <h2>Quality at the scale UAI demands</h2>
+      <p style="opacity: 0.7; margin-top: 12px; max-width: 750px;">
+        As the UAI program grows, so does the volume of modules and the complexity of the quality standards behind them. Fixatron automates the tedious parts so the focus stays on what matters most &mdash; the learning experience.
+      </p>
+      <ul class="problem-list solution-list mt-4">
+        <li>
+          <span class="bullet"></span>
+          <span><strong>Growing volume of modules</strong> &mdash; more content means more to review; automation lets the team keep pace without cutting corners</span>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <span><strong>Hundreds of settings per module</strong> &mdash; XML metadata, naming conventions, accessibility attributes &mdash; automation catches every detail instantly</span>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <span><strong>Consistency across the catalog</strong> &mdash; a single automated standard ensures every module is measured the same way</span>
+        </li>
+        <li>
+          <span class="bullet"></span>
+          <span><strong>Faster feedback loops</strong> &mdash; content authors can check quality instantly, accelerating the path from draft to published</span>
+        </li>
+      </ul>
+      <div class="quote-block">
+        "AI-powered quality assurance that checks every detail, every time."
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: The Value -->
+  <div class="slide slide-accent" data-slide="2">
+    <div class="content text-center">
+      <div class="big-callout-green">95</div>
+      <h2 style="font-size: 2.2rem;">quality rules, running in seconds &mdash;<br>an extra layer of assurance for every module</h2>
+      <p style="opacity: 0.8; margin-top: 24px; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.2rem;">
+        When we ran UAI Modules through Fixatron, it surfaced findings across metadata details, naming inconsistencies, and accessibility attributes &mdash; the kind of granular checks that are perfect for automation. An always-on safety net for every module.
+      </p>
+      <div class="highlight-box" style="max-width: 700px; margin: 32px auto 0; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25);">
+        <p style="font-size: 1.15rem;">AI doing what AI does best &mdash; so people can focus on what people do best.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: How We Built It — The Collaboration Story -->
+  <div class="slide slide-story" data-slide="3">
+    <div class="content">
+      <div class="label">The Story</div>
+      <h2>Built through human + AI partnership</h2>
+      <p style="opacity: 0.7; margin-top: 12px; max-width: 750px;">
+        Fixatron wasn't built by AI alone. It was a true collaboration &mdash; iterating together through real UAI Module exports, discovering patterns, refining rules, and pushing toward higher quality.
+      </p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker">1</div>
+          <div class="timeline-content">
+            <h3>Studied real UAI Module exports</h3>
+            <p>We started by examining actual module exports together &mdash; understanding the structure, the style guide expectations, and where issues tend to hide.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">2</div>
+          <div class="timeline-content">
+            <h3>Wrote rules, tested against real content, iterated</h3>
+            <p>Each rule was crafted, tested against multiple module exports, and refined. When a rule was too strict or too lenient, we adjusted together until it matched real-world expectations.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">3</div>
+          <div class="timeline-content">
+            <h3>Assigned specialized AI agents to different concerns</h3>
+            <p>Security, bug detection, UI/UX, user flow, accessibility &mdash; each area got focused attention from dedicated AI agents, working in parallel and then integrated.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">4</div>
+          <div class="timeline-content">
+            <h3>Continuous refinement through real-world testing</h3>
+            <p>We kept running new modules through the tool, discovering edge cases, and expanding coverage &mdash; growing from a handful of checks to 95 comprehensive rules.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: The AI Agents -->
+  <div class="slide slide-dark" data-slide="4">
+    <div class="content">
+      <div class="label">AI at Work</div>
+      <h2>Multiple AI agents, one mission</h2>
+      <p style="opacity: 0.7; margin-top: 12px; max-width: 750px;">
+        We didn't just use AI &mdash; we orchestrated multiple specialized agents, each focused on a different dimension of quality. This is what thoughtful AI collaboration looks like.
+      </p>
+      <div class="grid-3 mt-4">
+        <div class="agent-card">
+          <div class="agent-icon">🛡️</div>
+          <h3>Security Agent</h3>
+          <p>Ensured safe file handling, prompt injection defense, and no data leakage &mdash; because UAI content must be protected.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">🐛</div>
+          <h3>Bug Detection Agent</h3>
+          <p>Hunted for edge cases in XML parsing, rule logic, and fix operations &mdash; catching issues before they reach users.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">🎨</div>
+          <h3>UI/UX Agent</h3>
+          <p>Designed the interface so anyone can understand findings at a glance and take action with one click.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">🔄</div>
+          <h3>User Flow Agent</h3>
+          <p>Optimized the end-to-end workflow: upload, review findings, apply fixes, export &mdash; simple and intuitive.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">🧠</div>
+          <h3>Content Quality Agent</h3>
+          <p>Uses Claude to evaluate whether explanations are substantive, terminology is consistent, and learning outcomes are met.</p>
+        </div>
+        <div class="agent-card">
+          <div class="agent-icon">🧪</div>
+          <h3>Testing Agent</h3>
+          <p>Built a comprehensive test suite &mdash; 254 tests ensuring every rule, fix, and integration works correctly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: What It Does for You -->
+  <div class="slide slide-dark" data-slide="5">
+    <div class="content">
+      <div class="label">Benefits</div>
+      <h2>What Fixatron means for UAI</h2>
+      <div class="grid-2 mt-4">
+        <div>
+          <div class="impact-row">
+            <div class="impact-icon impact-icon-green">⚡</div>
+            <div class="impact-text">
+              <h3>Seconds instead of hours</h3>
+              <p>Full QA analysis of a UAI Module in under 5 seconds. What used to take hours is now instant.</p>
+            </div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-icon impact-icon-blue">🔍</div>
+            <div class="impact-text">
+              <h3>Comprehensive coverage</h3>
+              <p>95 rules checking every XML attribute, naming convention, and content pattern &mdash; consistently, every time.</p>
+            </div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-icon impact-icon-amber">🔧</div>
+            <div class="impact-text">
+              <h3>One-click fixes</h3>
+              <p>16 common issues are auto-corrected. Apply a fix, export the corrected module, and re-import &mdash; done.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="impact-row">
+            <div class="impact-icon impact-icon-purple">🧠</div>
+            <div class="impact-text">
+              <h3>AI-powered content review</h3>
+              <p>Claude evaluates explanation quality, terminology consistency, and learning completeness &mdash; beyond pattern matching.</p>
+            </div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-icon impact-icon-green">📊</div>
+            <div class="impact-text">
+              <h3>Consistent quality baseline</h3>
+              <p>Every module is measured against the same standard, every time.</p>
+            </div>
+          </div>
+          <div class="impact-row">
+            <div class="impact-icon impact-icon-blue">🚀</div>
+            <div class="impact-text">
+              <h3>Faster time to learners</h3>
+              <p>Content authors get instant feedback. Modules move from draft to published faster.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Before vs After -->
+  <div class="slide slide-dark" data-slide="6">
+    <div class="content">
+      <div class="label">Impact</div>
+      <h2>Before vs. After</h2>
+      <div class="comparison">
+        <div class="comparison-side comparison-before">
+          <h3 style="color: #ef4444;">Before Fixatron</h3>
+          <ul>
+            <li><span style="color: #ef4444;">&#x2715;</span> Hours of review per module</li>
+            <li><span style="color: #ef4444;">&#x2715;</span> Issues found weeks after authoring</li>
+            <li><span style="color: #ef4444;">&#x2715;</span> Hard to ensure consistency at scale</li>
+            <li><span style="color: #ef4444;">&#x2715;</span> Errors slip through to learners</li>
+            <li><span style="color: #ef4444;">&#x2715;</span> Manual fixes require LMS editing</li>
+            <li><span style="color: #ef4444;">&#x2715;</span> No quality audit trail</li>
+          </ul>
+        </div>
+        <div class="comparison-side comparison-after">
+          <h3 style="color: #22c55e;">After Fixatron</h3>
+          <ul>
+            <li><span style="color: #22c55e;">&#x2713;</span> Complete analysis in under 5 seconds</li>
+            <li><span style="color: #22c55e;">&#x2713;</span> Instant feedback during development</li>
+            <li><span style="color: #22c55e;">&#x2713;</span> Same 95 rules, every time, for every module</li>
+            <li><span style="color: #22c55e;">&#x2713;</span> Surfaces findings across every detail</li>
+            <li><span style="color: #22c55e;">&#x2713;</span> One-click fixes, export-ready</li>
+            <li><span style="color: #22c55e;">&#x2713;</span> AI evaluates content quality &amp; completeness</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box">
+        <p>Fixatron ensures nothing gets overlooked &mdash; comprehensive, consistent quality assurance for every UAI Module.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: A Model for AI Collaboration -->
+  <div class="slide slide-light" data-slide="7">
+    <div class="content text-center">
+      <div class="label" style="color: var(--accent);">Bigger Picture</div>
+      <h2 style="color: var(--text);">A model for AI-enabled work</h2>
+      <p style="color: var(--text-muted); margin-top: 12px; max-width: 750px; margin-left: auto; margin-right: auto;">
+        Fixatron2000 demonstrates what's possible when human expertise and AI capability work together deliberately.
+      </p>
+      <div class="grid-3 mt-4">
+        <div class="card-light">
+          <h3>Human sets direction</h3>
+          <p>Domain knowledge, quality standards, and judgment about what matters &mdash; that comes from the team.</p>
+        </div>
+        <div class="card-light">
+          <h3>AI amplifies capability</h3>
+          <p>Multiple specialized agents work in parallel &mdash; security, testing, UI, content analysis &mdash; covering more ground than any individual could.</p>
+        </div>
+        <div class="card-light">
+          <h3>Iteration drives quality</h3>
+          <p>Real module exports tested, rules refined, edge cases discovered and handled &mdash; each cycle made the tool smarter.</p>
+        </div>
+      </div>
+      <div style="margin-top: 40px;">
+        <div class="card-light" style="display: inline-block; max-width: 750px; text-align: left;">
+          <h3>What this means for Universal AI</h3>
+          <p>This same collaborative approach &mdash; human expertise + AI agents + iterative refinement &mdash; can be applied to other challenges across the UAI program. Fixatron is a proof point for how we can embed AI into our workflows to raise the bar on quality.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: What's Next -->
+  <div class="slide slide-dark" data-slide="8">
+    <div class="content">
+      <div class="label">Looking Ahead</div>
+      <h2>Where we go from here</h2>
+      <div class="grid-3 mt-4">
+        <div class="card">
+          <h3 style="color: #22c55e;">Today</h3>
+          <ul style="list-style: none; margin-top: 16px; font-size: 1rem;">
+            <li style="padding: 6px 0; opacity: 0.9;">&#x2713; 95 quality rules across 18 categories</li>
+            <li style="padding: 6px 0; opacity: 0.9;">&#x2713; AI-powered content evaluation</li>
+            <li style="padding: 6px 0; opacity: 0.9;">&#x2713; 16 one-click auto-fixes</li>
+            <li style="padding: 6px 0; opacity: 0.9;">&#x2713; Export corrected modules</li>
+            <li style="padding: 6px 0; opacity: 0.9;">&#x2713; Already surfacing findings in real modules</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color: #818cf8;">Next</h3>
+          <ul style="list-style: none; margin-top: 16px; font-size: 1rem;">
+            <li style="padding: 6px 0; opacity: 0.8;">Batch processing for multiple modules</li>
+            <li style="padding: 6px 0; opacity: 0.8;">AI-powered custom rule creation</li>
+            <li style="padding: 6px 0; opacity: 0.8;">Historical quality tracking</li>
+            <li style="padding: 6px 0; opacity: 0.8;">Exportable QA reports</li>
+            <li style="padding: 6px 0; opacity: 0.8;">Team collaboration features</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color: #c084fc;">Vision</h3>
+          <ul style="list-style: none; margin-top: 16px; font-size: 1rem;">
+            <li style="padding: 6px 0; opacity: 0.7;">Pre-publish quality gates</li>
+            <li style="padding: 6px 0; opacity: 0.7;">Cross-module consistency checks</li>
+            <li style="padding: 6px 0; opacity: 0.7;">Learning outcome alignment</li>
+            <li style="padding: 6px 0; opacity: 0.7;">Accessibility deep-dive (WCAG)</li>
+            <li style="padding: 6px 0; opacity: 0.7;">A model for AI-assisted QA across MIT</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: Closing -->
+  <div class="slide slide-mit" data-slide="9">
+    <div class="content text-center">
+      <h1 style="font-size: 3.5rem;">Fixatron2000</h1>
+      <p class="subtitle" style="max-width: 700px; margin: 20px auto 0; font-size: 1.3rem;">
+        AI-powered quality assurance for UAI Modules.<br>
+        Built through human + AI collaboration.<br>
+        Comprehensive quality, automatically.
+      </p>
+      <div style="margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <div class="stat">
+          <div class="stat-number" style="background: linear-gradient(135deg, #fff, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">95</div>
+          <div class="stat-label">Quality Rules</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" style="background: linear-gradient(135deg, #fff, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">&lt;5s</div>
+          <div class="stat-label">Full Analysis</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" style="background: linear-gradient(135deg, #fff, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">16</div>
+          <div class="stat-label">Auto-Fixes</div>
+        </div>
+      </div>
+      <p style="margin-top: 48px; font-size: 1rem; opacity: 0.7;">
+        MIT Open Learning &middot; Universal AI
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Navigation -->
+<div class="nav">
+  <button id="prev" onclick="navigate(-1)" aria-label="Previous slide">&#x2190;</button>
+  <span class="counter" id="counter">1 / 10</span>
+  <button id="next" onclick="navigate(1)" aria-label="Next slide">&#x2192;</button>
+</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
+
+  function showSlide(n) {
+    slides.forEach(s => s.classList.remove('active'));
+    slides[n].classList.add('active');
+    counter.textContent = `${n + 1} / ${total}`;
+    progress.style.width = `${((n + 1) / total) * 100}%`;
+    prevBtn.disabled = n === 0;
+    nextBtn.disabled = n === total - 1;
+  }
+
+  function navigate(dir) {
+    const next = current + dir;
+    if (next >= 0 && next < total) {
+      current = next;
+      showSlide(current);
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      navigate(1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+      e.preventDefault();
+      navigate(-1);
+    } else if (e.key === 'Home') {
+      current = 0;
+      showSlide(current);
+    } else if (e.key === 'End') {
+      current = total - 1;
+      showSlide(current);
+    }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 60) navigate(diff > 0 ? 1 : -1);
+  });
+
+  showSlide(0);
+</script>
+</body>
+</html>
