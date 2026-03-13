@@ -1,0 +1,1017 @@
+[
+  {
+    "id": "fonts-family-default",
+    "category": "Fonts",
+    "name": "No Custom Font Family",
+    "description": "No custom font-family in inline styles",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "fonts-size-default",
+    "category": "Fonts",
+    "name": "No Custom Font Size",
+    "description": "No custom font-size in inline styles",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "fonts-color-default",
+    "category": "Fonts",
+    "name": "No Custom Font Color",
+    "description": "No custom color in inline styles",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "word-paste-artifacts",
+    "category": "Fonts",
+    "name": "No Copy-Paste Artifacts",
+    "description": "Detect and clean Word/Office artifacts (mso-* styles, Mso* classes, <o:p>, <font>) and AI paste artifacts (data-start, data-end, data-is-last-node)",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lists-no-p-in-li",
+    "category": "Lists",
+    "name": "No Paragraphs in List Items",
+    "description": "No <p> tags inside <li> elements",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "bolding-use-strong",
+    "category": "Bolding",
+    "name": "Use Strong for Bold",
+    "description": "Bold uses <strong> not <b> or inline font-weight",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "headings-h4-overview-summary",
+    "category": "Headings",
+    "name": "H4 in Overview/Summary",
+    "description": "Section headers in overview/summary HTML should be <h4>",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "video-present",
+    "category": "Video",
+    "name": "Video Present",
+    "description": "Video is present in lecture/recitation verticals",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "video-downloadable",
+    "category": "Video",
+    "name": "Video Downloadable",
+    "description": "Video is downloadable (download_video=\"true\")",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "transcripts-present",
+    "category": "Transcripts",
+    "name": "Transcript Present",
+    "description": "Transcript present for each video",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "transcripts-downloadable",
+    "category": "Transcripts",
+    "name": "Transcript Downloadable",
+    "description": "Transcript downloadable (download_track=\"true\")",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "transcripts-instructor-speaker",
+    "category": "Transcripts",
+    "name": "Instructor Speaker Name",
+    "description": "All transcripts have 'INSTRUCTOR' for speaker name",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "pdf-slides-link-format",
+    "category": "PDF Slides",
+    "name": "Slide Link Format",
+    "description": "Slide link text follows format \"Slides: Lecture X.Y(PDF)\" or \"Lecture X.Y (PDF)\"",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "pdf-slides-separate-component",
+    "category": "PDF Slides",
+    "name": "Slide Link Separate Component",
+    "description": "Slide link is in a separate HTML component under the video",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "terms-learner-not-student",
+    "category": "Terms",
+    "name": "Learner Not Student",
+    "description": "\"Learner(s)\" used instead of \"student\", \"user\", \"you\"",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "terms-acronym-consistency",
+    "category": "Terms",
+    "name": "Acronym Plural Consistency",
+    "description": "Plural consistency for acronyms",
+    "severity": "info",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "asktim-present",
+    "category": "AskTIM",
+    "name": "AskTIM Chat Enabled",
+    "description": "AskTIM chat enabled on relevant content blocks (OL_OPENEDX_CHAT settings enabled)",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "learning-objectives-bold-topics",
+    "category": "Learning Objectives",
+    "name": "Bold Topics in Objectives",
+    "description": "Topics bolded in learning objectives using <strong>",
+    "severity": "info",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "learning-objectives-asktim",
+    "category": "Learning Objectives",
+    "name": "AskTIM on Objectives",
+    "description": "AskTIM present on learning objectives pages",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "summaries-bolding-standards",
+    "category": "Summaries",
+    "name": "Summary Bolding Standards",
+    "description": "Bold in takeaways follows standards",
+    "severity": "info",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-naming",
+    "category": "Knowledge Checks",
+    "name": "Knowledge Check Naming",
+    "description": "Named \"Knowledge Check N\" or \"Knowledge Check: Question N\"",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-sequential-numbering",
+    "category": "Knowledge Checks",
+    "name": "Sequential Numbering",
+    "description": "Numbered sequentially across module",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-max-attempts",
+    "category": "Knowledge Checks",
+    "name": "Max Attempts",
+    "description": "max_attempts = 3 (excludes complex checkboxes)",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "complexCheckboxThreshold": 5
+    }
+  },
+  {
+    "id": "knowledge-checks-complex-checkbox-attempts",
+    "category": "Knowledge Checks",
+    "name": "Complex Checkbox Attempts",
+    "description": "Checkbox with >5 options = 5 attempts",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 5,
+      "complexCheckboxThreshold": 5
+    }
+  },
+  {
+    "id": "knowledge-checks-showanswer",
+    "category": "Knowledge Checks",
+    "name": "Show Answer Setting",
+    "description": "showanswer = \"after_all_attempts_or_correct\"",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-explanation-present",
+    "category": "Knowledge Checks",
+    "name": "Explanation Present",
+    "description": "Explanation is present (solution block with \"Explanation\" text)",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-label-present",
+    "category": "Knowledge Checks",
+    "name": "Label Present",
+    "description": "Problem has a <label> element for the question text",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-correct-answer",
+    "category": "Knowledge Checks",
+    "name": "Correct Answer Marked",
+    "description": "Choice-based problems have at least one correct answer marked",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-explanation-quality",
+    "category": "Knowledge Checks",
+    "name": "Knowledge Check Explanation Quality",
+    "description": "Solution explanations detailed enough for deeper learning",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-explanation-quality",
+    "category": "Assignments",
+    "name": "Assignment Explanation Quality",
+    "description": "Assignment solution explanations detailed enough for deeper learning",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-truncated-options",
+    "category": "Knowledge Checks",
+    "name": "No Truncated Answer Options",
+    "description": "Uses AI to detect answer choices that appear incomplete or cut off during authoring, which can confuse learners.",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": false,
+    "params": {}
+  },
+  {
+    "id": "assignments-truncated-options",
+    "category": "Assignments",
+    "name": "No Truncated Answer Options",
+    "description": "Uses AI to detect assignment answer choices that appear incomplete or cut off during authoring, which can confuse learners.",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-truncated-options",
+    "category": "Library Content",
+    "name": "No Truncated Answer Options",
+    "description": "Uses AI to detect problem bank answer choices that appear incomplete or cut off during authoring, which can confuse learners.",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": false,
+    "params": {}
+  },
+  {
+    "id": "library-content-explanation-present",
+    "category": "Library Content",
+    "name": "Explanation Present",
+    "description": "Library content problems have a solution/explanation with the word \"Explanation\"",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-label-present",
+    "category": "Library Content",
+    "name": "Label Present",
+    "description": "Library content problems have a <label> or <div> element with question text",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-correct-answer",
+    "category": "Library Content",
+    "name": "Correct Answer Marked",
+    "description": "Library content choice-based problems have at least one correct answer marked",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-explanation-not-question",
+    "category": "Library Content",
+    "name": "Explanation Not Question Copy",
+    "description": "Library content solution text does not duplicate the question text",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-explanation-quality",
+    "category": "Library Content",
+    "name": "Library Content Explanation Quality",
+    "description": "Problem bank (library_content) solution explanations detailed enough for deeper learning",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-naming",
+    "category": "Assignments",
+    "name": "Assignment Naming",
+    "description": "Named \"Assignment N: Part N\"",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-question-numbering",
+    "category": "Assignments",
+    "name": "Question Numbering",
+    "description": "Questions numbered \"Question 1\" through \"Question N\" sequentially",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-attempts-multiple-choice",
+    "category": "Assignments",
+    "name": "Multiple Choice Attempts",
+    "description": "Multiple choice attempts = 2",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 2,
+      "problemType": "multiplechoiceresponse"
+    }
+  },
+  {
+    "id": "assignments-attempts-checkbox",
+    "category": "Assignments",
+    "name": "Checkbox Attempts",
+    "description": "Standard checkbox attempts = 3",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 3,
+      "problemType": "choiceresponse"
+    }
+  },
+  {
+    "id": "assignments-attempts-complex-checkbox",
+    "category": "Assignments",
+    "name": "Complex Checkbox Attempts",
+    "description": "Checkbox with >5 correct answers = 4 attempts",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 4,
+      "minCorrectAnswers": 5
+    }
+  },
+  {
+    "id": "assignments-attempts-problem-bank-2option",
+    "category": "Assignments",
+    "name": "Problem Bank 2-Option MC Attempts",
+    "description": "MC in problem banks with only 2 options = 1 attempt",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 1
+    }
+  },
+  {
+    "id": "assignments-attempts-numerical",
+    "category": "Assignments",
+    "name": "Numerical Input Attempts",
+    "description": "Numerical input attempts = 3",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 3,
+      "problemType": "numericalresponse"
+    }
+  },
+  {
+    "id": "assignments-showanswer",
+    "category": "Assignments",
+    "name": "Show Answer Setting",
+    "description": "showanswer = \"after_all_attempts_or_correct\"",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-explanation-present",
+    "category": "Assignments",
+    "name": "Explanation Present",
+    "description": "Explanation present and complete",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-explanation-not-question",
+    "category": "Assignments",
+    "name": "Explanation Not Question Copy",
+    "description": "The question wasn't accidentally copied into the explanation",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-overview-summary",
+    "category": "Assignments",
+    "name": "Overview and Summary Pages",
+    "description": "Each assignment has overview and summary page",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-not-blank",
+    "category": "Assignments",
+    "name": "Assignment Not Blank",
+    "description": "Assignment is not blank",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-label-present",
+    "category": "Assignments",
+    "name": "Label Present",
+    "description": "Problem has a <label> element for the question text",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-correct-answer",
+    "category": "Assignments",
+    "name": "Correct Answer Marked",
+    "description": "Choice-based problems have at least one correct answer marked",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-notebook-links",
+    "category": "Assignments",
+    "name": "Notebook Links",
+    "description": "If notebook present, links to correct notebook",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-naming",
+    "category": "Lectures",
+    "name": "Lecture Naming",
+    "description": "Named \"L X.Y\" followed by topic",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-overview-present",
+    "category": "Lectures",
+    "name": "Overview Present",
+    "description": "Each lecture has overview/learning objectives page",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-summary-present",
+    "category": "Lectures",
+    "name": "Summary Present",
+    "description": "Each lecture has a summary page",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-summary-takeaways",
+    "category": "Lectures",
+    "name": "Summary Key Takeaways",
+    "description": "Each lecture summary has key takeaways",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-overview-bold-title",
+    "category": "Lectures",
+    "name": "Overview Bold Title",
+    "description": "Overview has lecture title bolded",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-overview-bold-professor",
+    "category": "Lectures",
+    "name": "Overview Bold Professor",
+    "description": "Overview has professor name bolded",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-video-duration",
+    "category": "Lectures",
+    "name": "Video Duration",
+    "description": "Videos chunked 5-10 minutes",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "minMinutes": 5,
+      "maxMinutes": 10
+    }
+  },
+  {
+    "id": "lectures-title-matches-video",
+    "category": "Lectures",
+    "name": "Title Matches Video",
+    "description": "Unit title matches lecture video title",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-not-blank",
+    "category": "Lectures",
+    "name": "Lecture Not Blank",
+    "description": "Content is not blank",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-naming",
+    "category": "Recitations",
+    "name": "Recitation Naming",
+    "description": "Named \"R X.Y\" followed by topic",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-overview-present",
+    "category": "Recitations",
+    "name": "Overview Present",
+    "description": "Each recitation has overview page",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-summary-present",
+    "category": "Recitations",
+    "name": "Summary Present",
+    "description": "Each recitation has summary page",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-overview-bold-title",
+    "category": "Recitations",
+    "name": "Overview Bold Title",
+    "description": "Overview has title bolded",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-overview-bold-professor",
+    "category": "Recitations",
+    "name": "Overview Bold Professor",
+    "description": "Overview has professor name bolded",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-video-duration",
+    "category": "Recitations",
+    "name": "Video Duration",
+    "description": "Videos chunked 5-10 minutes",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "minMinutes": 5,
+      "maxMinutes": 10
+    }
+  },
+  {
+    "id": "recitations-title-matches-video",
+    "category": "Recitations",
+    "name": "Title Matches Video",
+    "description": "Unit title matches recitation video title",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "module-summary-exists",
+    "category": "Module Summary",
+    "name": "Module Summary Exists",
+    "description": "Module summary page exists",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "module-summary-has-survey-link",
+    "category": "Module Summary",
+    "name": "Survey Link Present",
+    "description": "Contains feedback survey link",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "module-summary-has-dashboard-link",
+    "category": "Module Summary",
+    "name": "Dashboard Link Present",
+    "description": "Contains dashboard link",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "custom-pages-resources-exists",
+    "category": "Custom Pages",
+    "name": "Resources Tab Exists",
+    "description": "Resources tab exists",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "custom-pages-glossary-exists",
+    "category": "Custom Pages",
+    "name": "Glossary Tab Exists",
+    "description": "Glossary tab exists",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "custom-pages-attributions-exists",
+    "category": "Custom Pages",
+    "name": "Attributions Tab Exists",
+    "description": "Attributions tab exists",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "custom-pages-glossary-course-name",
+    "category": "Custom Pages",
+    "name": "Glossary Course Name",
+    "description": "Glossary has correct course listed",
+    "severity": "warning",
+    "type": "static",
+    "enabled": false,
+    "params": {}
+  },
+  {
+    "id": "admin-grading-homework-weight",
+    "category": "Admin",
+    "name": "Homework Grading Weight",
+    "description": "Homework weight = 20%",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "type": "Homework",
+      "expectedWeight": 0.2
+    }
+  },
+  {
+    "id": "admin-grading-assignment-weight",
+    "category": "Admin",
+    "name": "Assignment Grading Weight",
+    "description": "Assignment weight = 80%",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "type": "Assignment",
+      "expectedWeight": 0.8
+    }
+  },
+  {
+    "id": "admin-self-paced",
+    "category": "Admin",
+    "name": "Self-Paced Mode",
+    "description": "Self-paced = true",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "admin-start-date-future",
+    "category": "Admin",
+    "name": "Start Date Future",
+    "description": "Start date is in the future",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "admin-beta-days",
+    "category": "Admin",
+    "name": "Beta Days Early",
+    "description": "days_early_for_beta = 365",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedDays": 365
+    }
+  },
+  {
+    "id": "admin-discussions-disabled",
+    "category": "Admin",
+    "name": "Discussions Disabled",
+    "description": "Discussions tab is hidden",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "admin-discussions-enabled-in-sections",
+    "category": "Admin",
+    "name": "No Discussions in Sections",
+    "description": "No verticals have discussion_enabled=true",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-img-alt-text",
+    "category": "Accessibility",
+    "name": "Image Alt Text",
+    "description": "All <img> tags have non-empty alt attributes",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-empty-links",
+    "category": "Accessibility",
+    "name": "No Empty Links",
+    "description": "All <a> tags have visible link text or aria-label",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-broken-static-links",
+    "category": "Broken References",
+    "name": "Static File Links Valid",
+    "description": "All links to /static/ files reference existing files",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "video-missing-edx-id",
+    "category": "Broken References",
+    "name": "Video Has edX ID",
+    "description": "All videos have a non-empty edxVideoId",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-empty-content",
+    "category": "Content Quality",
+    "name": "No Empty HTML Components",
+    "description": "HTML components have meaningful content (not blank or whitespace-only)",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "problem-duplicate-choices",
+    "category": "Content Quality",
+    "name": "No Duplicate Choices",
+    "description": "Multiple-choice and checkbox problems have no identical answer choices",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "problem-single-choice",
+    "category": "Content Quality",
+    "name": "No Single-Choice Questions",
+    "description": "Multiple-choice problems have at least 2 answer choices",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "links-open-new-window",
+    "category": "Content Quality",
+    "name": "Links Open New Window",
+    "description": "Notebook (.ipynb) and slide (.pdf) links open in a new window (target=\"_blank\")",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "chapter-has-content",
+    "category": "Structure",
+    "name": "Chapters Have Content",
+    "description": "All chapters contain at least one sequential",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "sequential-ordering-consistency",
+    "category": "Structure",
+    "name": "Sequential Ordering Consistent",
+    "description": "Sequentials within a chapter follow consistent numbering without gaps",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "problem-paste-artifacts",
+    "category": "Content Quality",
+    "name": "No Paste Artifacts in Problems",
+    "description": "Problem XML does not contain Word/Office or AI (ChatGPT) copy-paste artifacts such as data-start, mso-* styles, or ChatGPT wrapper markup",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-empty-paragraphs",
+    "category": "Content Quality",
+    "name": "No Empty Paragraphs",
+    "description": "HTML components do not contain empty <p></p>, <p/>, or <p>&nbsp;</p> tags",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "problem-empty-choice",
+    "category": "Content Quality",
+    "name": "No Empty Choices",
+    "description": "Multiple-choice and checkbox problems have no answer choices with empty or whitespace-only text",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "structure-has-drafts",
+    "category": "Structure",
+    "name": "Draft Content Warning",
+    "description": "Reports when the course export contains unpublished draft content in the drafts/ directory",
+    "severity": "info",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "transcripts-not-empty",
+    "category": "Transcripts",
+    "name": "Transcripts Not Empty",
+    "description": "Transcript SRT files are not empty or placeholder-only",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "minLines": 10
+    }
+  }
+]

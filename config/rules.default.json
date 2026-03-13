@@ -1,0 +1,1017 @@
+[
+  {
+    "id": "fonts-family-default",
+    "category": "Fonts",
+    "name": "No Custom Font Family",
+    "description": "Ensures no inline font-family styles are applied. Custom fonts break the platform's consistent look and may not render correctly on all devices.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "fonts-size-default",
+    "category": "Fonts",
+    "name": "No Custom Font Size",
+    "description": "Ensures no inline font-size styles are applied. Custom font sizes override the platform's responsive typography and can harm readability.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "fonts-color-default",
+    "category": "Fonts",
+    "name": "No Custom Font Color",
+    "description": "Ensures no inline color styles are applied. Custom colors can break accessibility contrast requirements and visual consistency.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "word-paste-artifacts",
+    "category": "Fonts",
+    "name": "No Copy-Paste Artifacts",
+    "description": "Detects leftover markup from pasting content out of Word, Office, or AI tools. Catches mso-* styles, Mso* classes, <o:p> tags, <font> tags, and AI-generated data attributes like data-start and data-end.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lists-no-p-in-li",
+    "category": "Lists",
+    "name": "No Paragraphs in List Items",
+    "description": "Ensures list items do not contain nested <p> tags, which cause extra spacing and inconsistent rendering across browsers.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "bolding-use-strong",
+    "category": "Bolding",
+    "name": "Use Strong for Bold",
+    "description": "Ensures bold text uses semantic <strong> tags instead of deprecated <b> tags or inline font-weight styles, improving accessibility and consistency.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "headings-h4-overview-summary",
+    "category": "Headings",
+    "name": "H4 in Overview/Summary",
+    "description": "Ensures section headers in overview and summary pages use <h4> tags to maintain a consistent heading hierarchy across the course.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "video-present",
+    "category": "Video",
+    "name": "Video Present",
+    "description": "Verifies that every lecture and recitation vertical contains a video component. Missing videos indicate incomplete content.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "video-downloadable",
+    "category": "Video",
+    "name": "Video Downloadable",
+    "description": "Verifies that videos have download_video set to true so learners can download them for offline viewing.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "transcripts-present",
+    "category": "Transcripts",
+    "name": "Transcript Present",
+    "description": "Verifies that every video has an associated transcript file. Transcripts are required for accessibility and aid comprehension.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "transcripts-downloadable",
+    "category": "Transcripts",
+    "name": "Transcript Downloadable",
+    "description": "Verifies that transcripts have download_track set to true so learners can download them for offline use.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "transcripts-instructor-speaker",
+    "category": "Transcripts",
+    "name": "Instructor Speaker Name",
+    "description": "Checks that all transcripts use \"INSTRUCTOR\" as the speaker name for consistency across the course.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "pdf-slides-link-format",
+    "category": "PDF Slides",
+    "name": "Slide Link Format",
+    "description": "Checks that slide download links follow the standard format: \"Slides: Lecture X.Y (PDF)\" or \"Lecture X.Y (PDF)\".",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "pdf-slides-separate-component",
+    "category": "PDF Slides",
+    "name": "Slide Link Separate Component",
+    "description": "Verifies that the slide download link is placed in its own HTML component directly below the video, not embedded in other content.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "terms-learner-not-student",
+    "category": "Terms",
+    "name": "Learner Not Student",
+    "description": "Ensures inclusive language by checking that content uses \"learner(s)\" instead of \"student\", \"user\", or second-person \"you\".",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "terms-acronym-consistency",
+    "category": "Terms",
+    "name": "Acronym Plural Consistency",
+    "description": "Uses AI to check that acronyms are pluralized consistently throughout the course (e.g., always \"APIs\" or always \"API's\", not a mix).",
+    "severity": "info",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "asktim-present",
+    "category": "AskTIM",
+    "name": "AskTIM Chat Enabled",
+    "description": "Checks that the AskTIM AI chat assistant is enabled on relevant content blocks via OL_OPENEDX_CHAT settings, giving learners on-demand help.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "learning-objectives-bold-topics",
+    "category": "Learning Objectives",
+    "name": "Bold Topics in Objectives",
+    "description": "Checks that key topic names in learning objectives are bolded with <strong> tags for visual emphasis and scannability.",
+    "severity": "info",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "learning-objectives-asktim",
+    "category": "Learning Objectives",
+    "name": "AskTIM on Objectives",
+    "description": "Verifies that the AskTIM chat assistant is enabled on learning objectives pages so learners can ask questions about what they'll learn.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "summaries-bolding-standards",
+    "category": "Summaries",
+    "name": "Summary Bolding Standards",
+    "description": "Checks that bold formatting in summary takeaways follows course standards, using <strong> tags consistently for key terms.",
+    "severity": "info",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-naming",
+    "category": "Knowledge Checks",
+    "name": "Knowledge Check Naming",
+    "description": "Ensures knowledge checks follow the standard naming pattern: \"Knowledge Check N\" or \"Knowledge Check: Question N\".",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-sequential-numbering",
+    "category": "Knowledge Checks",
+    "name": "Sequential Numbering",
+    "description": "Verifies that knowledge checks are numbered sequentially across each module with no gaps or duplicates.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-max-attempts",
+    "category": "Knowledge Checks",
+    "name": "Max Attempts",
+    "description": "Ensures knowledge check problems allow exactly 3 attempts (max_attempts=3). Checkbox problems with more than 5 options are excluded and checked separately.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "complexCheckboxThreshold": 5
+    }
+  },
+  {
+    "id": "knowledge-checks-complex-checkbox-attempts",
+    "category": "Knowledge Checks",
+    "name": "Complex Checkbox Attempts",
+    "description": "Ensures checkbox problems with more than 5 answer options allow exactly 4 attempts, since these are harder and deserve an extra try.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 4,
+      "complexCheckboxThreshold": 5
+    }
+  },
+  {
+    "id": "knowledge-checks-showanswer",
+    "category": "Knowledge Checks",
+    "name": "Show Answer Setting",
+    "description": "Ensures the \"show answer\" setting is configured to \"after_all_attempts_or_correct\" so learners must attempt the problem before seeing the answer.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-explanation-present",
+    "category": "Knowledge Checks",
+    "name": "Explanation Present",
+    "description": "Verifies that every knowledge check has a solution block containing an explanation, so learners understand why the answer is correct.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-label-present",
+    "category": "Knowledge Checks",
+    "name": "Label Present",
+    "description": "Ensures each knowledge check problem has a <label> element containing the question text, which is required for screen reader accessibility.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-correct-answer",
+    "category": "Knowledge Checks",
+    "name": "Correct Answer Marked",
+    "description": "Verifies that every choice-based knowledge check has at least one answer marked as correct. Problems without a correct answer can never be completed.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-explanation-quality",
+    "category": "Knowledge Checks",
+    "name": "Knowledge Check Explanation Quality",
+    "description": "Uses AI to evaluate whether solution explanations are detailed enough to help learners understand the concept, not just the correct answer.",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-explanation-quality",
+    "category": "Assignments",
+    "name": "Assignment Explanation Quality",
+    "description": "Uses AI to evaluate whether assignment solution explanations provide enough detail for learners to understand the underlying concepts.",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "knowledge-checks-truncated-options",
+    "category": "Knowledge Checks",
+    "name": "No Truncated Answer Options",
+    "description": "Uses AI to detect answer choices that appear incomplete or cut off during authoring, which can confuse learners.",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-truncated-options",
+    "category": "Assignments",
+    "name": "No Truncated Answer Options",
+    "description": "Uses AI to detect assignment answer choices that appear incomplete or cut off during authoring, which can confuse learners.",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-truncated-options",
+    "category": "Library Content",
+    "name": "No Truncated Answer Options",
+    "description": "Uses AI to detect problem bank answer choices that appear incomplete or cut off during authoring, which can confuse learners.",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-explanation-present",
+    "category": "Library Content",
+    "name": "Explanation Present",
+    "description": "Verifies that every problem in the shared problem bank has a solution block containing the word \"Explanation\".",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-label-present",
+    "category": "Library Content",
+    "name": "Label Present",
+    "description": "Ensures problem bank problems have a <label> or <div> element containing the question text for accessibility.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-correct-answer",
+    "category": "Library Content",
+    "name": "Correct Answer Marked",
+    "description": "Verifies that every choice-based problem in the problem bank has at least one answer marked as correct.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-explanation-not-question",
+    "category": "Library Content",
+    "name": "Explanation Not Question Copy",
+    "description": "Detects when the solution text is just a copy of the question text, which usually indicates the explanation was not actually written.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "library-content-explanation-quality",
+    "category": "Library Content",
+    "name": "Library Content Explanation Quality",
+    "description": "Uses AI to evaluate whether problem bank solution explanations are detailed enough to support deeper learning beyond just knowing the answer.",
+    "severity": "warning",
+    "type": "ai",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-naming",
+    "category": "Assignments",
+    "name": "Assignment Naming",
+    "description": "Ensures assignments follow the standard naming pattern: \"Assignment N: Part N\" for consistency across the course.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-question-numbering",
+    "category": "Assignments",
+    "name": "Question Numbering",
+    "description": "Verifies that assignment questions are numbered sequentially from \"Question 1\" through \"Question N\" with no gaps or duplicates.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-attempts-multiple-choice",
+    "category": "Assignments",
+    "name": "Multiple Choice Attempts",
+    "description": "Ensures multiple-choice assignment problems allow exactly 2 attempts, balancing learner practice with assessment rigor.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 2,
+      "problemType": "multiplechoiceresponse"
+    }
+  },
+  {
+    "id": "assignments-attempts-checkbox",
+    "category": "Assignments",
+    "name": "Checkbox Attempts",
+    "description": "Ensures standard checkbox assignment problems allow exactly 3 attempts, since selecting multiple correct answers is harder.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 3,
+      "problemType": "choiceresponse"
+    }
+  },
+  {
+    "id": "assignments-attempts-complex-checkbox",
+    "category": "Assignments",
+    "name": "Complex Checkbox Attempts",
+    "description": "Ensures checkbox problems with more than 5 answer options allow exactly 4 attempts, since these are significantly harder.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 4,
+      "minOptions": 5
+    }
+  },
+  {
+    "id": "assignments-attempts-problem-bank-2option",
+    "category": "Assignments",
+    "name": "Problem Bank 2-Option MC Attempts",
+    "description": "Ensures multiple-choice problems from problem banks with only 2 options allow exactly 1 attempt, since a second try would be a guaranteed correct answer.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 1
+    }
+  },
+  {
+    "id": "assignments-attempts-numerical",
+    "category": "Assignments",
+    "name": "Numerical Input Attempts",
+    "description": "Ensures numerical input assignment problems allow exactly 3 attempts, giving learners room to correct calculation errors.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedAttempts": 3,
+      "problemType": "numericalresponse"
+    }
+  },
+  {
+    "id": "assignments-showanswer",
+    "category": "Assignments",
+    "name": "Show Answer Setting",
+    "description": "Ensures the \"show answer\" setting is configured to \"after_all_attempts_or_correct\" so learners must try the problem before seeing the answer.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-explanation-present",
+    "category": "Assignments",
+    "name": "Explanation Present",
+    "description": "Verifies that every assignment problem has a complete solution explanation to support learning from mistakes.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-explanation-not-question",
+    "category": "Assignments",
+    "name": "Explanation Not Question Copy",
+    "description": "Detects when the question text was accidentally copied into the explanation field instead of writing an actual explanation.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-overview-summary",
+    "category": "Assignments",
+    "name": "Overview and Summary Pages",
+    "description": "Verifies that each assignment includes both an overview page (introducing the assignment) and a summary page (wrapping it up).",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-not-blank",
+    "category": "Assignments",
+    "name": "Assignment Not Blank",
+    "description": "Detects assignment sections that have no content, which usually indicates incomplete course development.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-label-present",
+    "category": "Assignments",
+    "name": "Label Present",
+    "description": "Ensures each assignment problem has a <label> element containing the question text, which is required for screen reader accessibility.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-correct-answer",
+    "category": "Assignments",
+    "name": "Correct Answer Marked",
+    "description": "Verifies that every choice-based assignment problem has at least one answer marked as correct. Problems without a correct answer can never be completed.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "assignments-notebook-links",
+    "category": "Assignments",
+    "name": "Notebook Links",
+    "description": "When a Jupyter notebook is referenced in an assignment, verifies that the link points to the correct notebook file.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-naming",
+    "category": "Lectures",
+    "name": "Lecture Naming",
+    "description": "Ensures lectures follow the standard naming pattern: \"L X.Y\" followed by the topic name (e.g., \"L 1.2 Introduction to Python\").",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-overview-present",
+    "category": "Lectures",
+    "name": "Overview Present",
+    "description": "Verifies that each lecture includes an overview page with learning objectives so learners know what to expect.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-summary-present",
+    "category": "Lectures",
+    "name": "Summary Present",
+    "description": "Verifies that each lecture includes a summary page to reinforce key concepts covered in the lecture.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-summary-takeaways",
+    "category": "Lectures",
+    "name": "Summary Key Takeaways",
+    "description": "Checks that each lecture summary includes a list of key takeaways to help learners remember the most important points.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-overview-bold-title",
+    "category": "Lectures",
+    "name": "Overview Bold Title",
+    "description": "Checks that the lecture title is bolded in the overview page for visual prominence and consistent formatting.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-overview-bold-professor",
+    "category": "Lectures",
+    "name": "Overview Bold Professor",
+    "description": "Checks that the professor's name is bolded in the lecture overview page for consistent formatting.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-video-duration",
+    "category": "Lectures",
+    "name": "Video Duration",
+    "description": "Checks that lecture videos are between 5 and 10 minutes long. Shorter videos may lack depth; longer ones reduce learner engagement.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "minMinutes": 5,
+      "maxMinutes": 10
+    }
+  },
+  {
+    "id": "lectures-title-matches-video",
+    "category": "Lectures",
+    "name": "Title Matches Video",
+    "description": "Verifies that the unit title matches the embedded video title, catching cases where videos were placed in the wrong unit.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "lectures-not-blank",
+    "category": "Lectures",
+    "name": "Lecture Not Blank",
+    "description": "Detects lecture units that have no content, which usually indicates incomplete course development.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-naming",
+    "category": "Recitations",
+    "name": "Recitation Naming",
+    "description": "Ensures recitations follow the standard naming pattern: \"R X.Y\" followed by the topic name (e.g., \"R 1.2 Data Wrangling Practice\").",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-overview-present",
+    "category": "Recitations",
+    "name": "Overview Present",
+    "description": "Verifies that each recitation includes an overview page introducing what will be covered.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-summary-present",
+    "category": "Recitations",
+    "name": "Summary Present",
+    "description": "Verifies that each recitation includes a summary page to reinforce key concepts.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-overview-bold-title",
+    "category": "Recitations",
+    "name": "Overview Bold Title",
+    "description": "Checks that the recitation title is bolded in the overview page for consistent formatting.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-overview-bold-professor",
+    "category": "Recitations",
+    "name": "Overview Bold Professor",
+    "description": "Checks that the professor's name is bolded in the recitation overview page for consistent formatting.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "recitations-video-duration",
+    "category": "Recitations",
+    "name": "Video Duration",
+    "description": "Checks that recitation videos are between 5 and 10 minutes long to maintain learner engagement.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "minMinutes": 5,
+      "maxMinutes": 10
+    }
+  },
+  {
+    "id": "recitations-title-matches-video",
+    "category": "Recitations",
+    "name": "Title Matches Video",
+    "description": "Verifies that the unit title matches the embedded video title, catching misplaced videos.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "module-summary-exists",
+    "category": "Module Summary",
+    "name": "Module Summary Exists",
+    "description": "Verifies that each module has a summary page providing a wrap-up of the module's content.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "module-summary-has-survey-link",
+    "category": "Module Summary",
+    "name": "Survey Link Present",
+    "description": "Checks that the module summary includes a feedback survey link so learners can share their experience.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "module-summary-has-dashboard-link",
+    "category": "Module Summary",
+    "name": "Dashboard Link Present",
+    "description": "Checks that the module summary includes a link back to the course dashboard for easy navigation.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "custom-pages-resources-exists",
+    "category": "Custom Pages",
+    "name": "Resources Tab Exists",
+    "description": "Verifies that the course includes a Resources tab where learners can find supplemental materials.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "custom-pages-glossary-exists",
+    "category": "Custom Pages",
+    "name": "Glossary Tab Exists",
+    "description": "Verifies that the course includes a Glossary tab defining key terms used throughout the course.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "custom-pages-attributions-exists",
+    "category": "Custom Pages",
+    "name": "Attributions Tab Exists",
+    "description": "Checks for an Attributions tab that credits third-party content used in the course.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "custom-pages-glossary-course-name",
+    "category": "Custom Pages",
+    "name": "Glossary Course Name",
+    "description": "Verifies that the glossary page references the correct course name, catching cases where a glossary was copied from another course.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "admin-grading-homework-weight",
+    "category": "Admin",
+    "name": "Homework Grading Weight",
+    "description": "Ensures the Homework grading category is weighted at 20% of the total grade.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "type": "Homework",
+      "expectedWeight": 0.2
+    }
+  },
+  {
+    "id": "admin-grading-assignment-weight",
+    "category": "Admin",
+    "name": "Assignment Grading Weight",
+    "description": "Ensures the Assignment grading category is weighted at 80% of the total grade.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "type": "Assignment",
+      "expectedWeight": 0.8
+    }
+  },
+  {
+    "id": "admin-self-paced",
+    "category": "Admin",
+    "name": "Self-Paced Mode",
+    "description": "Ensures the course is set to self-paced mode, allowing learners to progress at their own speed.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "admin-start-date-future",
+    "category": "Admin",
+    "name": "Start Date Future",
+    "description": "Warns if the course start date is in the future, which may prevent learners from accessing content.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "admin-beta-days",
+    "category": "Admin",
+    "name": "Beta Days Early",
+    "description": "Ensures days_early_for_beta is set to 365 so beta testers can access the course a full year before the start date.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "expectedDays": 365
+    }
+  },
+  {
+    "id": "admin-discussions-disabled",
+    "category": "Admin",
+    "name": "Discussions Disabled",
+    "description": "Ensures the global Discussions tab is hidden, since this course uses alternative discussion mechanisms.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "admin-discussions-enabled-in-sections",
+    "category": "Admin",
+    "name": "No Discussions in Sections",
+    "description": "Ensures no individual sections have discussion_enabled set to true, preventing stray discussion threads in the course content.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-img-alt-text",
+    "category": "Accessibility",
+    "name": "Image Alt Text",
+    "description": "Ensures every <img> tag has a non-empty alt attribute so screen readers can describe images to visually impaired learners.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-empty-links",
+    "category": "Accessibility",
+    "name": "No Empty Links",
+    "description": "Ensures every <a> tag has visible link text or an aria-label so screen readers can describe the link's purpose.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-broken-static-links",
+    "category": "Broken References",
+    "name": "Static File Links Valid",
+    "description": "Verifies that all links pointing to /static/ files actually reference files that exist in the course export.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "video-missing-edx-id",
+    "category": "Broken References",
+    "name": "Video Has edX ID",
+    "description": "Ensures every video component has a non-empty edxVideoId. Missing IDs mean the video won't play on the platform.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-empty-content",
+    "category": "Content Quality",
+    "name": "No Empty HTML Components",
+    "description": "Detects HTML components that are blank or contain only whitespace, which appear as empty space to learners.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "problem-duplicate-choices",
+    "category": "Content Quality",
+    "name": "No Duplicate Choices",
+    "description": "Detects multiple-choice and checkbox problems that have identical answer choices, which confuse learners and indicate a copy-paste error.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "problem-single-choice",
+    "category": "Content Quality",
+    "name": "No Single-Choice Questions",
+    "description": "Ensures multiple-choice problems have at least 2 answer choices. A single choice makes the question trivial.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "links-open-new-window",
+    "category": "Content Quality",
+    "name": "Links Open New Window",
+    "description": "Ensures links to Jupyter notebooks (.ipynb) and PDF slides open in a new window (target=\"_blank\") so learners don't lose their place in the course.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "chapter-has-content",
+    "category": "Structure",
+    "name": "Chapters Have Content",
+    "description": "Verifies that every chapter contains at least one sequential (subsection). Empty chapters indicate incomplete course structure.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "sequential-ordering-consistency",
+    "category": "Structure",
+    "name": "Sequential Ordering Consistent",
+    "description": "Checks that subsections within each chapter follow consistent numbering without unexpected gaps.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "problem-paste-artifacts",
+    "category": "Content Quality",
+    "name": "No Paste Artifacts in Problems",
+    "description": "Detects Word/Office or AI (ChatGPT) copy-paste artifacts in problem XML, such as mso-* styles, data-start attributes, or ChatGPT wrapper markup.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "html-empty-paragraphs",
+    "category": "Content Quality",
+    "name": "No Empty Paragraphs",
+    "description": "Detects empty paragraph tags (<p></p>, <p/>, or <p>&nbsp;</p>) that create unwanted blank space in the content.",
+    "severity": "warning",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "problem-empty-choice",
+    "category": "Content Quality",
+    "name": "No Empty Choices",
+    "description": "Detects answer choices that are blank or contain only whitespace, which usually indicates the problem was not fully authored.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "structure-has-drafts",
+    "category": "Structure",
+    "name": "Draft Content Warning",
+    "description": "Reports when the course export contains unpublished draft content in the drafts/ directory. Drafts may need to be published or removed before launch.",
+    "severity": "info",
+    "type": "static",
+    "enabled": true,
+    "params": {}
+  },
+  {
+    "id": "transcripts-not-empty",
+    "category": "Transcripts",
+    "name": "Transcripts Not Empty",
+    "description": "Ensures transcript SRT files contain real content (at least 10 lines) and are not empty or placeholder-only files.",
+    "severity": "error",
+    "type": "static",
+    "enabled": true,
+    "params": {
+      "minLines": 10
+    }
+  }
+]
